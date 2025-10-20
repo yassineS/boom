@@ -529,5 +529,4 @@ func (self Aux) Value() (v interface{}) {
 	default:
 		panic(fmt.Sprintf("boom: unknown type %q", t))
 	}
-	return
 }
