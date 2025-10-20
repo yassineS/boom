@@ -117,11 +117,11 @@ func (vf *VCFFile) Read() (*VCFRecord, error) {
 }
 
 // Chrom returns the chromosome/contig name for the variant.
-func (vr *VCFRecord) Chrom(hdr *C.bcf_hdr_t) string {
-	if vr.rec == nil || hdr == nil {
+func (vr *VCFRecord) Chrom(vf *VCFFile) string {
+	if vr.rec == nil || vf == nil || vf.hdr == nil {
 		return ""
 	}
-	name := C.bcf_hdr_id2name(hdr, C.int(vr.rec.rid))
+	name := C.bcf_hdr_id2name(vf.hdr, C.int(vr.rec.rid))
 	if name == nil {
 		return ""
 	}

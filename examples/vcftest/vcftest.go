@@ -44,9 +44,8 @@ func main() {
 			log.Fatalf("Error reading record: %v", err)
 		}
 
-		// Note: To get chromosome name, we need access to the header
-		// This is a simplified example showing position and ID
-		fmt.Printf("Variant %d: Position=%d, ID=%s\n", count+1, rec.Pos()+1, rec.ID())
+		// Print chromosome, position (1-based for display), and ID
+		fmt.Printf("Variant %d: %s:%d ID=%s\n", count+1, rec.Chrom(vf), rec.Pos()+1, rec.ID())
 		count++
 
 		// Limit output for demonstration
