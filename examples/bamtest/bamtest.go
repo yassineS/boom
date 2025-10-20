@@ -15,7 +15,7 @@ var (
 
 func main() {
 	boom.Verbosity(0)
-	bf, err := boom.OpenBAM("test-sort.bam")
+	bf, err := boom.OpenBAM("../../testdata/test-sort.bam")
 	if err != nil {
 		panic(err)
 	}
@@ -52,7 +52,7 @@ func main() {
 		return true // Only return the first one.
 	}
 
-	i, err := boom.LoadIndex("test-sort.bam")
+	i, err := boom.LoadIndex("../../testdata/test-sort.bam")
 	if err != nil {
 		panic(err)
 	}
