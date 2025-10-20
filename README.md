@@ -37,3 +37,22 @@ go get github.com/yassineS/boom
 ## Documentation
 
 See https://www.htslib.org/ for htslib documentation.
+
+## Testing
+
+The package includes tests for handling various file formats supported by htslib:
+
+- BAM/SAM files (alignment formats)
+- FASTQ files (sequence format with quality scores)
+- FASTA files (sequence format)
+- Compressed versions of the above formats (.gz)
+
+To run tests:
+
+```bash
+go test -v
+```
+
+**Note:** Tests require htslib to be installed. If htslib is not available, tests will be skipped automatically.
+
+Test data files are located in the `testdata/` directory and include sample FASTQ and FASTA files for validation.
