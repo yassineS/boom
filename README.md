@@ -2,6 +2,10 @@
 
 samtools bindings for Go
 
+This package provides Go bindings for the htslib library, supporting:
+- SAM/BAM files for sequence alignment data
+- VCF/BCF files for variant call data
+
 ## Installation
 
 This package requires htslib to be installed on your system.
