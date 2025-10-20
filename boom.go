@@ -379,10 +379,9 @@ func samOpen(filename, mode string, aux header) (sf *samFile, err error) {
 	return
 }
 func samFdOpen(fd uintptr, mode string, aux header) (sf *samFile, err error) {
-	// Note: htslib doesn't have a direct fdopen equivalent for samFile
-	// We'll need to use hts_hopen with an hFILE wrapper, but that's complex
-	// For now, we'll return an error indicating this is not supported
-	return nil, fmt.Errorf("boom: samFdOpen not supported with htslib - use samOpen instead")
+	// htslib doesn't have direct fd open, but we can use /dev/fd/N syntax on Unix-like systems
+	filename := fmt.Sprintf("/dev/fd/%d", fd)
+	return samOpen(filename, mode, aux)
 }
 
 // header returns the bamHeader wrapping the sam_hdr_t associated with sf
