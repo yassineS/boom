@@ -71,16 +71,17 @@ func (vf *VCFFile) Close() error {
 // VCFRecord represents a single variant record from a VCF file.
 type VCFRecord struct {
 	rec *C.bcf1_t
+	hdr *C.bcf_hdr_t
 }
 
 // newVCFRecord creates a new VCF record.
-func newVCFRecord() (*VCFRecord, error) {
+func newVCFRecord(hdr *C.bcf_hdr_t) (*VCFRecord, error) {
 	rec := C.bcf_init()
 	if rec == nil {
 		return nil, couldNotAllocate
 	}
 
-	vr := &VCFRecord{rec: rec}
+	vr := &VCFRecord{rec: rec, hdr: hdr}
 	runtime.SetFinalizer(vr, (*VCFRecord).destroy)
 
 	return vr, nil
@@ -100,7 +101,7 @@ func (vf *VCFFile) Read() (*VCFRecord, error) {
 		return nil, valueIsNil
 	}
 
-	vr, err := newVCFRecord()
+	vr, err := newVCFRecord(vf.hdr)
 	if err != nil {
 		return nil, err
 	}
@@ -117,11 +118,11 @@ func (vf *VCFFile) Read() (*VCFRecord, error) {
 }
 
 // Chrom returns the chromosome/contig name for the variant.
-func (vr *VCFRecord) Chrom(vf *VCFFile) string {
-	if vr.rec == nil || vf == nil || vf.hdr == nil {
+func (vr *VCFRecord) Chrom() string {
+	if vr.rec == nil || vr.hdr == nil {
 		return ""
 	}
-	name := C.bcf_hdr_id2name(vf.hdr, C.int(vr.rec.rid))
+	name := C.bcf_hdr_id2name(vr.hdr, C.int(vr.rec.rid))
 	if name == nil {
 		return ""
 	}

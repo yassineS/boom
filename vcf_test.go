@@ -95,7 +95,7 @@ chr1	200	rs002	G	C	40	PASS	DP=15	GT	1/1
 		t.Errorf("Expected ID 'rs001', got '%s'", rec1.ID())
 	}
 
-	chrom := rec1.Chrom(vf)
+	chrom := rec1.Chrom()
 	if chrom != "chr1" {
 		t.Errorf("Expected chromosome 'chr1', got '%s'", chrom)
 	}

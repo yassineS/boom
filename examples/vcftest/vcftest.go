@@ -45,7 +45,7 @@ func main() {
 		}
 
 		// Print chromosome, position (1-based for display), and ID
-		fmt.Printf("Variant %d: %s:%d ID=%s\n", count+1, rec.Chrom(vf), rec.Pos()+1, rec.ID())
+		fmt.Printf("Variant %d: %s:%d ID=%s\n", count+1, rec.Chrom(), rec.Pos()+1, rec.ID())
 		count++
 
 		// Limit output for demonstration
