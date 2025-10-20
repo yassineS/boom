@@ -14,7 +14,7 @@ import (
 func TestFASTQFileHandling(t *testing.T) {
 	// Check if htslib is available by trying to open a test file
 	testFile := filepath.Join("testdata", "test.fastq")
-	
+
 	// Check if test file exists
 	if _, err := os.Stat(testFile); os.IsNotExist(err) {
 		t.Skipf("Test file %s does not exist", testFile)
@@ -44,7 +44,7 @@ func TestFASTQFileHandling(t *testing.T) {
 func TestFASTAFileHandling(t *testing.T) {
 	// Check if htslib is available by trying to open a test file
 	testFile := filepath.Join("testdata", "test.fasta")
-	
+
 	// Check if test file exists
 	if _, err := os.Stat(testFile); os.IsNotExist(err) {
 		t.Skipf("Test file %s does not exist", testFile)
@@ -73,7 +73,7 @@ func TestFASTAFileHandling(t *testing.T) {
 // TestFASTQWithCompression tests that compressed FASTQ files can be handled
 func TestFASTQWithCompression(t *testing.T) {
 	testFile := filepath.Join("testdata", "test.fastq.gz")
-	
+
 	// Check if test file exists
 	if _, err := os.Stat(testFile); os.IsNotExist(err) {
 		t.Skipf("Test file %s does not exist", testFile)
@@ -102,7 +102,7 @@ func TestFASTQWithCompression(t *testing.T) {
 // TestFASTAWithCompression tests that compressed FASTA files can be handled
 func TestFASTAWithCompression(t *testing.T) {
 	testFile := filepath.Join("testdata", "test.fasta.gz")
-	
+
 	// Check if test file exists
 	if _, err := os.Stat(testFile); os.IsNotExist(err) {
 		t.Skipf("Test file %s does not exist", testFile)
@@ -131,7 +131,7 @@ func TestFASTAWithCompression(t *testing.T) {
 // TestNonexistentFile tests that opening a nonexistent file returns an error
 func TestNonexistentFile(t *testing.T) {
 	testFile := filepath.Join("testdata", "nonexistent.fastq")
-	
+
 	sf, err := samOpen(testFile, "r", nil)
 	if err == nil {
 		if sf != nil {
