@@ -12,16 +12,13 @@ func main() {
 	// Set verbosity to minimal
 	boom.Verbosity(0)
 
-	// Test file path - this would normally be a real VCF file
-	filename := "test.vcf"
+	// Test file path - use the test VCF file in testdata
+	filename := "../../testdata/test.vcf"
 
 	// Open the VCF file
 	vf, err := boom.OpenVCF(filename)
 	if err != nil {
-		log.Printf("Note: %v", err)
-		log.Println("This test requires a VCF file named 'test.vcf'")
-		log.Println("VCF support is implemented and ready to use.")
-		return
+		log.Fatalf("Error opening VCF file: %v", err)
 	}
 	defer vf.Close()
 

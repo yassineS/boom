@@ -44,12 +44,13 @@ See https://www.htslib.org/ for htslib documentation.
 
 ## Testing
 
-The package includes tests for handling various file formats supported by htslib:
+The package includes comprehensive tests for handling various file formats supported by htslib:
 
-- BAM/SAM files (alignment formats)
-- FASTQ files (sequence format with quality scores)
-- FASTA files (sequence format)
-- Compressed versions of the above formats (.gz)
+- **SAM/BAM files** (sam_bam_test.go) - Tests for reading and writing sequence alignment data
+- **VCF files** (vcf_test.go) - Tests for reading variant call data
+- **FASTQ/FASTA files** (fastq_fasta_test.go) - Tests for reading sequence data
+- **BAM indexing** (index_test.go) - Tests for loading and using BAM index files for random access
+- **Compressed formats** - Tests for handling gzip-compressed versions (.gz)
 
 To run tests:
 
@@ -59,4 +60,8 @@ go test -v
 
 **Note:** Tests require htslib to be installed. If htslib is not available, tests will be skipped automatically.
 
-Test data files are located in the `testdata/` directory and include sample FASTQ and FASTA files for validation.
+Test data files are located in the `testdata/` directory and include:
+- Sample FASTA/FASTQ files for sequence format validation
+- Sample SAM/BAM files for alignment format validation
+- Sample VCF file for variant format validation
+- BAM index files for testing random access functionality

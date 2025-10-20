@@ -12,8 +12,12 @@ This directory contains test files for testing various file formats supported by
 
 ### Alignment Files
 - `test.sam` - Sample SAM alignment file
-- `test-sort.bam` - Sample sorted BAM alignment file
+- `test.bam` - Sample BAM alignment file
+- `test-sort.bam` - Sample sorted BAM alignment file (used for testing indexed access)
 - `test-sort.bam.bai` - BAM index file for test-sort.bam
+
+### Variant Files
+- `test.vcf` - Sample VCF (Variant Call Format) file with 5 variants across 2 chromosomes
 
 ## Format Details
 
@@ -35,12 +39,20 @@ SAM (Sequence Alignment/Map) and BAM (binary SAM) files contain aligned sequence
 - BAM is a compressed binary format
 - BAI files are index files for BAM files enabling rapid random access
 
+### VCF Format
+VCF (Variant Call Format) files contain variant call data:
+- VCF is a text-based format for storing gene sequence variations
+- Each record represents a genomic variant with position, reference, and alternate alleles
+- Can include sample genotype information and quality metrics
+
 ## Usage in Tests
 
 These test files are used by the tests to verify that:
-- FASTQ files can be opened and handled
-- FASTA files can be opened and handled
-- SAM/BAM alignment files can be opened and handled
+- FASTQ files can be opened and handled (fastq_fasta_test.go)
+- FASTA files can be opened and handled (fastq_fasta_test.go)
+- SAM/BAM alignment files can be opened and handled (sam_bam_test.go)
+- VCF variant files can be opened and handled (vcf_test.go)
+- BAM index files can be loaded and used for random access (index_test.go)
 - Compressed versions (gzip) of various formats can be handled
 - The htslib wrapper correctly interfaces with these file formats
 
