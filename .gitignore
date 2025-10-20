@@ -4,7 +4,6 @@
 *.dll
 *.so
 *.dylib
-*.test
 
 # Output of the go build command
 boom
