@@ -1,0 +1,13 @@
+##fileformat=VCFv4.2
+##contig=<ID=chr1,length=248956422>
+##contig=<ID=chr2,length=242193529>
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth">
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	Sample1	Sample2
+chr1	100	rs001	A	T	30	PASS	DP=10;AF=0.5	GT:GQ	0/1:30	0/0:40
+chr1	200	rs002	G	C	40	PASS	DP=15;AF=0.75	GT:GQ	1/1:50	0/1:35
+chr1	300	rs003	C	A,G	50	PASS	DP=20;AF=0.3,0.2	GT:GQ	1/2:45	0/1:38
+chr2	150	rs004	T	A	25	PASS	DP=8;AF=0.25	GT:GQ	0/1:28	0/0:42
+chr2	250	rs005	A	G	35	PASS	DP=12;AF=0.6	GT:GQ	1/1:48	1/0:33
