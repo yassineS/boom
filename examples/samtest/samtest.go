@@ -8,7 +8,7 @@ import (
 
 func main() {
 	boom.Verbosity(0)
-	sf, err := boom.OpenSAM("test.sam", "")
+	sf, err := boom.OpenSAM("../../testdata/test.sam", "")
 	if err != nil {
 		panic(err)
 	}
